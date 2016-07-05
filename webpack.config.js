@@ -14,7 +14,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const SplitByPathPlugin = require('webpack-split-by-path')
 
-const configDefaulter = require('../dev/webpack.config.default')
+const configDefaulter = require('brickyard-command-dev/webpack.config.default')
 
 const extractCSS = new ExtractTextPlugin('static_[contentHash:8].css', {
 	disable: false,

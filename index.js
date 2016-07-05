@@ -7,7 +7,7 @@ const configMaker = require('./webpack.config')
 const webpack = require('webpack')
 const util = require('util')
 
-const installCmd = require('../install')
+const installCmd = require('brickyard-command-install')
 const _ = require("lodash")
 
 module.exports = {
