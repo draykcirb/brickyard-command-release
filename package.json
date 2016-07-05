@@ -1,8 +1,29 @@
 {
-  "name": "package",
-  "author": "John Doe",
-  "version": "0.0.0",
-  "description": "nothing.",
+  "name": "brickyard-command-release",
+  "version": "0.0.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "e-cloud",
+  "license": "ISC",
+  "dependencies": {
+    "babel-eslint": "^6.0.0-beta.6",
+    "copy-webpack-plugin": "^2.1.1",
+    "del": "^2.2.0",
+    "eslint": "^2.8.0",
+    "eslint-config-airbnb-base": "^3.0.0",
+    "eslint-loader": "^1.3.0",
+    "eslint-plugin-import": "^1.5.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "image-webpack-loader": "^1.6.3",
+    "lodash": "^4.6.1",
+    "log4js": "^0.6.33",
+    "stats-webpack-plugin": "^0.3.1",
+    "webpack": "^1.12.14",
+    "webpack-split-by-path": "0.0.8"
+  },
   "devDependencies": {
     "conventional-changelog": "^1.1.0",
     "eslint": "^2.8.0",
@@ -11,10 +32,6 @@
     "ghooks": "^1.2.1",
     "validate-commit-msg": "^2.6.1"
   },
-  "scripts": {
-    "test": "echo 'no test!'"
-  },
-  "license": "ISC",
   "config": {
     "validate-commit-msg": {
       "types": [
