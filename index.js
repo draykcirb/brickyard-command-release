@@ -8,7 +8,7 @@ const webpack = require('webpack')
 const util = require('util')
 
 const installCmd = require('brickyard-command-install')
-const _ = require("lodash")
+const _ = require('lodash')
 
 module.exports = {
 	register,
