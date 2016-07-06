@@ -30,6 +30,11 @@
     "ghooks": "^1.2.1",
     "validate-commit-msg": "^2.6.1"
   },
+  "peerDependencies": {
+    "brickyard3": "~1.0.0",
+    "brickyard-command-dev": "^0.0.2",
+    "brickyard-command-install": "^0.0.2"
+  },
   "config": {
     "validate-commit-msg": {
       "types": [
