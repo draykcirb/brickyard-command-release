@@ -22,6 +22,7 @@ module.exports = {
  */
 function register(cmd, optionsCallback) {
 	cmd
+		.alias('r')
 		.description('release a program')
 		.arguments('<program...>')
 		.usage('<program...> [options]')
