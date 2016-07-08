@@ -28,7 +28,7 @@ function register(cmd, optionsCallback) {
 		.usage('<program...> [options]')
 		.option('--dest <dir>', 'output dir')
 		.option('--dest-prefix <prefix>', 'output dir prefix')
-		.option('--hashbit', 'fingerprint length of the resources')
+		.option('--hashbit <bitlength>', 'fingerprint length of the resources')
 		.option('--no-compress', 'if compress the output file')
 		.option('--clean', 'clean the release www dir(boolean or path)')
 		.option('--debuggable', 'release with debuggable application(Specific for angular)')
