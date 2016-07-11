@@ -10,6 +10,10 @@
   },
   "author": "e-cloud",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:draykcirb/brickyard-command-release.git"
+  },
   "dependencies": {
     "babel-eslint": "^6.0.0-beta.6",
     "copy-webpack-plugin": "^3.0.0",
