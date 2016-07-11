@@ -5,8 +5,6 @@
 
 const webpack = require('webpack')
 const path = require('path')
-const url = require('url')
-const fs = require('fs')
 const _ = require('lodash')
 const CleanWebpackPlugin = require('./clean-webpack-plugin')
 
@@ -43,12 +41,12 @@ function constructProductionDefaultConfig(config, defaultConfig) {
 			publicPath: '',
 			pathinfo: !config.compress,
 			filename: '[name]_[chunkHash:10].js',
-			chunkFilename: "[id]-[chunkHash:10].js"
+			chunkFilename: '[id]-[chunkHash:10].js'
 		},
 		debug: !config.compress,
 		devtool: config.compress ? null : 'cheap-source-map',
 		module: {
-			/*preLoaders: [
+			/* preLoaders: [
 			 { test: /\.(sass|scss)$/, loader: 'stylelint' },
 			 {
 			 test: /\.js$/,
@@ -82,7 +80,7 @@ function constructProductionDefaultConfig(config, defaultConfig) {
 				{
 					test: /\.html$/,
 					exclude: /index\.html$/,
-					loaders: ['ngtemplate?relativeTo=' + defaultConfig.context, 'html?attrs=link:href img:src source:src']
+					loaders: [`ngtemplate?relativeTo=${defaultConfig.context}`, 'html?attrs=link:href img:src source:src']
 				},
 				// misc file
 				{
