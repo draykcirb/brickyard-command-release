@@ -21,7 +21,7 @@ module.exports = {
  * @param {function(Object)} optionsCallback
  */
 function register(cmd, optionsCallback) {
-	cmd
+	return cmd
 		.alias('r')
 		.description('release a program')
 		.arguments('<program...>')
@@ -56,6 +56,7 @@ function run(runtime) {
 	} else {
 		installCmd.run(runtime)
 			.then(function () {
+				logger.info('start webpack building...\n')
 				webpack(webpackConfig, function (err, stats) {
 					if (err) throw err
 					logger.info('following is the webpack bundle stats:\n', stats.toString({
