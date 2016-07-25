@@ -30,6 +30,7 @@ function register(cmd, optionsCallback) {
 		.option('--dest-prefix <prefix>', 'output dir prefix')
 		.option('--hashbit <bitlength>', 'fingerprint length of the resources')
 		.option('--no-compress', 'if compress the output file')
+		.option('--no-lint', 'disable linting the source files')
 		.option('--clean', 'clean the release www dir(boolean or path)')
 		.option('--debuggable', 'release with debuggable application(Specific for angular)')
 		.option('--show-config', 'output the webpack config')
