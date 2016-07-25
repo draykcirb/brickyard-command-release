@@ -38,7 +38,7 @@
   "peerDependencies": {
     "brickyard3": "^1.0.0",
     "brickyard-command-dev": "~0.2.0",
-    "brickyard-command-install": "~0.1.0"
+    "brickyard-command-install": "~0.2.0"
   },
   "config": {
     "validate-commit-msg": {
