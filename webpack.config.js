@@ -46,14 +46,6 @@ function constructProductionDefaultConfig(config, defaultConfig) {
 		debug: !config.compress,
 		devtool: config.compress ? null : 'cheap-source-map',
 		module: {
-			/* preLoaders: [
-			 { test: /\.(sass|scss)$/, loader: 'stylelint' },
-			 {
-			 test: /\.js$/,
-			 exclude: /(node_modules|bower_components)/,
-			 loaders: ['eslint-loader']
-			 }
-			 ],*/
 			loaders: [
 				// website ico
 				{
@@ -62,7 +54,7 @@ function constructProductionDefaultConfig(config, defaultConfig) {
 				},
 				// js file
 				{
-					test: /\.js?$/,
+					test: /\.js$/,
 					exclude: /(node_modules|bower_components)/,
 					loaders: ['ng-annotate-loader', 'babel-loader']
 				},
@@ -161,7 +153,8 @@ function constructProductionDefaultConfig(config, defaultConfig) {
 	}
 
 	if (config.clean) {
-		webpackConfig.plugins.push(new CleanWebpackPlugin(_.isBoolean(config.clean) ? defaultConfig.output.path : config.clean, { verbose: true }))
+		webpackConfig.plugins.push(
+			new CleanWebpackPlugin(_.isBoolean(config.clean) ? defaultConfig.output.path : config.clean, { verbose: true }))
 	}
 
 	return webpackConfig
