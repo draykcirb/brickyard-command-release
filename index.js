@@ -12,7 +12,14 @@ const _ = require('lodash')
 
 module.exports = {
 	register,
-	run
+	run,
+	config: {
+		hashbit: 7,
+		lint: false,
+		showConfig: false,
+		debuggable: false,
+		compress: true
+	}
 }
 
 /**
