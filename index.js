@@ -35,6 +35,7 @@ function register(cmd, optionsCallback) {
         .usage('<program...> [options]')
         .option('--dest <dir>', 'output dir')
         .option('--dest-prefix <prefix>', 'output dir prefix')
+        .option('--dest-postfix <postfix>', 'output dir to host actual assets')
         .option('--hashbit <bitlength>', 'fingerprint length of the resources')
         .option('--no-compress', 'if compress the output file')
         .option('--no-lint', 'disable linting the source files')
