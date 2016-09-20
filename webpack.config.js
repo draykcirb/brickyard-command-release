@@ -45,6 +45,8 @@ function constructProductionDefaultConfig(config, defaultConfig) {
 		},
 		debug: !config.compress,
 		devtool: config.compress ? null : 'cheap-source-map',
+		// this is for long term caching
+		recordsPath: path.resolve(process.cwd(), '.tmp/webpack-records.json'),
 		module: {
 			loaders: [
 				// website ico
@@ -126,13 +128,6 @@ function constructProductionDefaultConfig(config, defaultConfig) {
 				}
 			])
 		],
-		eslint: {
-			emitError: true,
-			emitWarning: false,
-			quiet: false,
-			failOnWarning: false,
-			failOnError: true
-		},
 		imageWebpackLoader: {
 			progressive: true, // for jpg
 			optimizationLevel: 7, // for png
