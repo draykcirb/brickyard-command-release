@@ -58,7 +58,7 @@ function constructProductionDefaultConfig(config, defaultConfig) {
                 },
                 // scss
                 {
-                    test: /\.scss$/,
+                    test: /\.s[ac]ss$/,
                     loader: extractSASS.extract(['css', 'postcss', 'resolve-url', 'sass?sourceMap'])
                 },
                 // misc file
