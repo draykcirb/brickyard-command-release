@@ -3,12 +3,13 @@
  */
 'use strict'
 const logger = require('log4js').getLogger('release-command')
-const configMaker = require('./webpack.config')
 const webpack = require('webpack')
 const util = require('util')
-
 const installCmd = require('brickyard-command-install')
 const _ = require('lodash')
+const brickyardWebpack = require('brickyard-webpack')
+
+const configMaker = require('./webpack.config')
 
 module.exports = {
     register,
@@ -59,7 +60,12 @@ function run(runtime) {
         process.exit(1)
     }
 
-    const webpackConfig = configMaker.make(runtime)
+    brickyardWebpack.registerFactory(configMaker.construct)
+
+    process.env.NODE_ENV = 'PRODUCTION'
+
+    const webpackConfig = brickyardWebpack.makeConfig(runtime)
+
     if (runtime.config.showConfig) {
         console.log(util.inspect(webpackConfig, { depth: 4 }))
     } else {

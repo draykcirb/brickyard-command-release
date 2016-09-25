@@ -13,8 +13,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const SplitByPathPlugin = require('webpack-split-by-path')
 
-const configDefaulter = require('brickyard-command-dev/webpack.config.default')
-
 const extractCSS = new ExtractTextPlugin('static_[contentHash:8].css', {
     disable: false,
     allChunks: true
@@ -26,9 +24,7 @@ const extractSASS = new ExtractTextPlugin('main_[contentHash:8].css', {
 })
 
 module.exports = {
-    make: function (runtime) {
-        return configDefaulter.make(runtime, constructProductionDefaultConfig)
-    }
+    construct: constructProductionDefaultConfig
 }
 
 function constructProductionDefaultConfig(config, defaultConfig) {
