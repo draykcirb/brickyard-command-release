@@ -51,12 +51,6 @@ function constructProductionDefaultConfig(config, defaultConfig) {
                     test: /favicon.ico$/,
                     loader: 'file?name=[name]_[hash:6].[ext]'
                 },
-                // js file
-                {
-                    test: /\.js$/,
-                    exclude: /(node_modules|bower_components)/,
-                    loaders: ['ng-annotate-loader', 'babel-loader']
-                },
                 // pure css
                 {
                     test: /\.css$/,
@@ -66,12 +60,6 @@ function constructProductionDefaultConfig(config, defaultConfig) {
                 {
                     test: /\.scss$/,
                     loader: extractSASS.extract(['css', 'postcss', 'resolve-url', 'sass?sourceMap'])
-                },
-                // html
-                {
-                    test: /\.html$/,
-                    exclude: /index\.html$/,
-                    loaders: [`ngtemplate?relativeTo=${defaultConfig.context}`, 'html?attrs=link:href img:src source:src']
                 },
                 // misc file
                 {
