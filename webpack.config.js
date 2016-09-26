@@ -13,21 +13,20 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const SplitByPathPlugin = require('webpack-split-by-path')
 
-const extractCSS = new ExtractTextPlugin('static_[contentHash:8].css', {
-    disable: false,
-    allChunks: true
-})
-
-const extractSASS = new ExtractTextPlugin('main_[contentHash:8].css', {
-    disable: false,
-    allChunks: true
-})
 
 module.exports = {
     construct: constructProductionDefaultConfig
 }
 
 function constructProductionDefaultConfig(config, defaultConfig) {
+    const extractCSS = new ExtractTextPlugin('[name]_[contentHash:8].css', {
+        allChunks: true
+    })
+
+    const extractSASS = new ExtractTextPlugin('[name]_[contentHash:8].css', {
+        allChunks: true
+    })
+
     const webpackConfig = {
         entry: {
             main: [
@@ -134,7 +133,11 @@ function constructProductionDefaultConfig(config, defaultConfig) {
 
     if (config.clean) {
         webpackConfig.plugins.push(
-            new CleanWebpackPlugin(_.isBoolean(config.clean) ? defaultConfig.output.path : config.clean, { verbose: true }))
+            new CleanWebpackPlugin(
+                _.isBoolean(config.clean) ? defaultConfig.output.path : config.clean,
+                { verbose: true }
+            )
+        )
     }
 
     return webpackConfig
