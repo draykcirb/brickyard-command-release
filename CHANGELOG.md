@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/draykcirb/brickyard-command-release/compare/v0.3.0...v0.4.0) (2016-09-26)
+
+
+### Bug Fixes
+
+* remove angular speicfic config ([9557cb5](https://github.com/draykcirb/brickyard-command-release/commit/9557cb5))
+
+
+### Features
+
+* remove `webpack-split-by-path` and entry config ([f1c81d1](https://github.com/draykcirb/brickyard-command-release/commit/f1c81d1))
+* support .sass transpilation ([8984faa](https://github.com/draykcirb/brickyard-command-release/commit/8984faa))
+* use `brickyard-webpack` for constructing webpack config ([addfe6b](https://github.com/draykcirb/brickyard-command-release/commit/addfe6b))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/draykcirb/brickyard-command-release/compare/v0.2.1...v0.3.0) (2016-09-21)
 
