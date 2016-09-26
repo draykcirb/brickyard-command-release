@@ -11,7 +11,6 @@ const CleanWebpackPlugin = require('./clean-webpack-plugin')
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const SplitByPathPlugin = require('webpack-split-by-path')
 
 
 module.exports = {
@@ -19,7 +18,7 @@ module.exports = {
 }
 
 function constructProductionDefaultConfig(config, defaultConfig) {
-    const extractCSS = new ExtractTextPlugin('[name]_[contentHash:8].css', {
+    const extractCSS = new ExtractTextPlugin('static_[contentHash:8].css', {
         allChunks: true
     })
 
@@ -28,11 +27,6 @@ function constructProductionDefaultConfig(config, defaultConfig) {
     })
 
     const webpackConfig = {
-        entry: {
-            main: [
-                'babel-polyfill'
-            ]
-        },
         output: {
             publicPath: '',
             pathinfo: !config.compress,
@@ -102,15 +96,21 @@ function constructProductionDefaultConfig(config, defaultConfig) {
             extractCSS,
             extractSASS,
             new CopyWebpackPlugin([{ from: 'static' }]),
-            new SplitByPathPlugin([
-                {
-                    name: 'vendor',
-                    path: [
-                        path.join(process.cwd(), 'node_modules'),
-                        path.join(config.outputBase, 'bower_components')
-                    ]
+            //new webpack.optimize.CommonsChunkPlugin('manifest', '[name]_[hash:10].js'),
+            /*new webpack.optimize.CommonsChunkPlugin({
+                name: 'vendor',
+                filename: '[name]_[hash:10].js',
+                minChunks: (mod) => {
+                    if (typeof mod.userRequest !== 'string') {
+                        return false
+                    }
+
+                    let isThirdParty = mod.userRequest.indexOf('node_modules') !== -1
+                        || mod.userRequest.indexOf('bower_components') !== -1
+
+                    return !isThirdParty
                 }
-            ])
+            })*/
         ],
         imageWebpackLoader: {
             progressive: true, // for jpg
