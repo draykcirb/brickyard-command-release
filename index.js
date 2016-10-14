@@ -19,7 +19,8 @@ module.exports = {
         lint: false,
         showConfig: false,
         debuggable: false,
-        compress: true
+        compress: true,
+        dev: true
     }
 }
 
@@ -49,7 +50,7 @@ function register(cmd, optionsCallback) {
             if (!opts.destPrefix) {
                 opts.destPrefix = 'release'
             }
-            if(opts.sourcemap === undefined && !opts.compress){
+            if (opts.sourcemap === undefined && !opts.compress) {
                 opts.sourcemap = true
             }
             optionsCallback(opts)
