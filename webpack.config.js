@@ -34,7 +34,7 @@ function constructProductionDefaultConfig(config, defaultConfig) {
             chunkFilename: '[id]-[chunkHash:10].js'
         },
         debug: !config.compress,
-        devtool: config.compress ? null : 'cheap-source-map',
+        devtool: config.sourcemap ? 'source-map' : null,
         // this is for long term caching
         recordsPath: path.resolve(process.cwd(), '.tmp/webpack-records.json'),
         module: {

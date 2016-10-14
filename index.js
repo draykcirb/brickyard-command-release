@@ -39,6 +39,7 @@ function register(cmd, optionsCallback) {
         .option('--dest-postfix <postfix>', 'output dir to host actual assets')
         .option('--hashbit <bitlength>', 'fingerprint length of the resources')
         .option('--no-compress', 'if compress the output file')
+        .option('--sourcemap', 'output sourcemap')
         .option('--no-lint', 'disable linting the source files')
         .option('--clean', 'clean the release www dir(boolean or path)')
         .option('--debuggable', 'release with debuggable application(Specific for angular)')
@@ -47,6 +48,9 @@ function register(cmd, optionsCallback) {
             const opts = Object.assign({ program: program }, this.opts())
             if (!opts.destPrefix) {
                 opts.destPrefix = 'release'
+            }
+            if(opts.sourcemap === undefined && !opts.compress){
+                opts.sourcemap = true
             }
             optionsCallback(opts)
         })
