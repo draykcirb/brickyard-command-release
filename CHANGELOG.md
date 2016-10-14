@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/draykcirb/brickyard-command-release/compare/v0.4.0...v0.5.0) (2016-10-14)
+
+
+### Bug Fixes
+
+* ensure install cmd install dev dependencies ([fae5103](https://github.com/draykcirb/brickyard-command-release/commit/fae5103))
+
+
+### Features
+
+* add sourcemap output control ([8a5b0f1](https://github.com/draykcirb/brickyard-command-release/commit/8a5b0f1))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/draykcirb/brickyard-command-release/compare/v0.3.0...v0.4.0) (2016-09-26)
 
