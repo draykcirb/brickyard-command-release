@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "babel-eslint": "^6.1.0",
-    "brickyard-webpack": "^1.0.0",
+    "brickyard-webpack": "^1.3.2",
     "copy-webpack-plugin": "^3.0.0",
     "del": "^2.2.0",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -32,7 +32,7 @@
     "eslint-config-airbnb-base": "^7.0.0",
     "eslint-plugin-import": "^1.15.0",
     "ghooks": "^1.3.1",
-    "standard-version": "^2.4.0",
+    "standard-version": "^3.0.0",
     "validate-commit-msg": "^2.8.0"
   },
   "peerDependencies": {
