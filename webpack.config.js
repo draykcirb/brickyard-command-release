@@ -9,10 +9,7 @@ const webpack = require('webpack')
 const path = require('path')
 const _ = require('lodash')
 const CleanWebpackPlugin = require('./clean-webpack-plugin')
-
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-
 
 module.exports = {
     construct: constructProductionDefaultConfig
@@ -112,7 +109,6 @@ function constructProductionDefaultConfig(config, defaultConfig) {
             new webpack.optimize.OccurrenceOrderPlugin(),
             extractCSS,
             extractSASS,
-            new CopyWebpackPlugin([{ from: 'static' }]),
             new webpack.LoaderOptionsPlugin({
                 debug: !config.compress
             })
