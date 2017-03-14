@@ -88,17 +88,26 @@ function constructProductionDefaultConfig(config, defaultConfig) {
                         {
                             loader: 'image-webpack-loader',
                             query: {
-                                progressive: true, // for jpg
-                                optimizationLevel: 7, // for png
-                                interlaced: false, // for gif
+                                mozjpeg: {
+                                    progressive: true,
+                                },
+                                gifsicle: {
+                                    interlaced: false,
+                                },
+                                optipng: {
+                                    optimizationLevel: 7,
+                                },
+                                pngquant: {
+                                    quality: '75-90',
+                                    speed: 4,
+                                },
                                 svgo: {
                                     plugins: [
                                         {
                                             cleanupIDs: false
                                         }
                                     ]
-                                }, // for svg
-                                pngquant: { quality: '65-90', speed: 4 }
+                                }
                             }
                         }
                     ]
