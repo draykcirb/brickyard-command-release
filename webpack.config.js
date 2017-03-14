@@ -2,6 +2,7 @@
  * Created by scott on 16-4-5.
  */
 /* eslint import/no-unresolved:0 */
+
 'use strict'
 
 const webpack = require('webpack')
@@ -18,11 +19,13 @@ module.exports = {
 }
 
 function constructProductionDefaultConfig(config, defaultConfig) {
-    const extractCSS = new ExtractTextPlugin('static_[contentHash:8].css', {
+    const extractCSS = new ExtractTextPlugin({
+        filename: 'static_[contentHash:8].css',
         allChunks: true
     })
 
-    const extractSASS = new ExtractTextPlugin('[name]_[contentHash:8].css', {
+    const extractSASS = new ExtractTextPlugin({
+        filename: '[name]_[contentHash:8].css',
         allChunks: true
     })
 
@@ -33,60 +36,74 @@ function constructProductionDefaultConfig(config, defaultConfig) {
             filename: '[name]_[chunkHash:10].js',
             chunkFilename: '[id]-[chunkHash:10].js'
         },
-        debug: !config.compress,
-        devtool: config.sourcemap ? 'source-map' : null,
+        devtool: config.sourcemap ? 'source-map' : false,
         // this is for long term caching
         recordsPath: path.resolve(process.cwd(), '.tmp/webpack-records.json'),
         module: {
-            loaders: [
+            rules: [
                 // website ico
                 {
                     test: /favicon.ico$/,
-                    loader: 'file?name=[name]_[hash:6].[ext]'
+                    loader: 'file-loader?name=[name]_[hash:6].[ext]'
                 },
                 // pure css
                 {
                     test: /\.css$/,
-                    loader: extractCSS.extract(['css', 'postcss'])
+                    loader: extractCSS.extract(['css-loader', 'postcss-loader'])
                 },
                 // scss
                 {
                     test: /\.s[ac]ss$/,
-                    loader: extractSASS.extract(['css', 'postcss', 'resolve-url', 'sass?sourceMap'])
+                    loader: extractSASS.extract(['css-loader', 'postcss-loader', 'resolve-url-loader', 'sass-loader?sourceMap'])
                 },
                 // misc file
                 {
                     test: /\.(json|map|wsdl|xsd)$/,
                     loaders: [
-                        'file?name=misc/[name]-[hash:8].[ext]'
+                        'file-loader?name=misc/[name]-[hash:8].[ext]'
                     ]
                 },
                 // music file
                 {
                     test: /\.(mp3|wav)$/,
                     loaders: [
-                        'file?name=media/[name]-[hash:8].[ext]'
+                        'file-loader?name=media/[name]-[hash:8].[ext]'
                     ]
                 },
                 // font file
                 {
                     test: /\.(woff|woff2|ttf|eot)(\?.+)?$/,
                     loaders: [
-                        'file?name=font/[name]-[hash:8].[ext]'
+                        'file-loader?name=font/[name]-[hash:8].[ext]'
                     ]
                 },
                 {
                     test: /\.(svg)(\?.+)$/,
                     loaders: [
-                        'file?name=font/[name]-[hash:8].[ext]'
+                        'file-loader?name=font/[name]-[hash:8].[ext]'
                     ]
                 },
                 // image file
                 {
                     test: /\.(jpe?g|png|gif|svg)$/i,
                     loaders: [
-                        'file?hash=sha512&digest=hex&name=[name]_[hash:8].[ext]',
-                        'image-webpack'
+                        'file-loader?hash=sha512&digest=hex&name=[name]_[hash:8].[ext]',
+                        {
+                            loader: 'image-webpack-loader',
+                            query: {
+                                progressive: true, // for jpg
+                                optimizationLevel: 7, // for png
+                                interlaced: false, // for gif
+                                svgo: {
+                                    plugins: [
+                                        {
+                                            cleanupIDs: false
+                                        }
+                                    ]
+                                }, // for svg
+                                pngquant: { quality: '65-90', speed: 4 }
+                            }
+                        }
                     ]
                 }
             ]
@@ -96,8 +113,11 @@ function constructProductionDefaultConfig(config, defaultConfig) {
             extractCSS,
             extractSASS,
             new CopyWebpackPlugin([{ from: 'static' }]),
-            //new webpack.optimize.CommonsChunkPlugin('manifest', '[name]_[hash:10].js'),
-            /*new webpack.optimize.CommonsChunkPlugin({
+            new webpack.LoaderOptionsPlugin({
+                debug: !config.compress
+            })
+            // new webpack.optimize.CommonsChunkPlugin('manifest', '[name]_[hash:10].js'),
+            /* new webpack.optimize.CommonsChunkPlugin({
                 name: 'vendor',
                 filename: '[name]_[hash:10].js',
                 minChunks: (mod) => {
@@ -111,20 +131,7 @@ function constructProductionDefaultConfig(config, defaultConfig) {
                     return !isThirdParty
                 }
             })*/
-        ],
-        imageWebpackLoader: {
-            progressive: true, // for jpg
-            optimizationLevel: 7, // for png
-            interlaced: false, // for git
-            svgo: {
-                plugins: [
-                    {
-                        cleanupIDs: false
-                    }
-                ]
-            }, // for svg
-            pngquant: { quality: '65-90', speed: 4 }
-        }
+        ]
     }
 
     if (config.compress) {

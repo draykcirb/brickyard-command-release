@@ -1,11 +1,13 @@
 /**
  * Created by scott on 16-3-31.
  */
+
 'use strict'
+
 const logger = require('log4js').getLogger('release-command')
 const webpack = require('webpack')
 const util = require('util')
-const installCmd = require('brickyard-command-install')
+const installCmd = require('brickyard-command-install') // eslint-disable-line
 const _ = require('lodash')
 const brickyardWebpack = require('brickyard-webpack')
 

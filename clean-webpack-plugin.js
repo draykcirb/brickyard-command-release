@@ -4,6 +4,7 @@
  *
  * copy and modify from https://github.com/johnagan/clean-webpack-plugin
  */
+
 'use strict'
 
 const os = require('os')
