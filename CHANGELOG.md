@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/draykcirb/brickyard-command-release/compare/v0.5.0...v1.0.0) (2017-03-14)
+
+
+### Bug Fixes
+
+* remove warnings from image-webpack-loader ([68c17bd](https://github.com/draykcirb/brickyard-command-release/commit/68c17bd))
+
+
+### Features
+
+* remove copywebpackplugin ([5628d12](https://github.com/draykcirb/brickyard-command-release/commit/5628d12))
+* update to support webpack 2 ([214fe2c](https://github.com/draykcirb/brickyard-command-release/commit/214fe2c))
+
+
+### BREAKING CHANGES
+
+* Not compatible with old webpack 1
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/draykcirb/brickyard-command-release/compare/v0.4.0...v0.5.0) (2016-10-14)
 
