@@ -10,6 +10,8 @@ const path = require('path')
 const _ = require('lodash')
 const CleanWebpackPlugin = require('./clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const cssnano = require('cssnano')
 
 module.exports = {
     construct: constructProductionDefaultConfig
@@ -140,7 +142,20 @@ function constructProductionDefaultConfig(config, defaultConfig) {
     }
 
     if (config.compress) {
-        webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }))
+        webpackConfig.plugins.push(
+            new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
+            new OptimizeCSSAssetsPlugin({
+                cssProcessor: cssnano,
+                cssProcessorOptions: {
+                    discardComments: {
+                        removeAll: true,
+                    },
+                    // Run cssnano in safe mode to avoid
+                    // potentially unsafe transformations.
+                    safe: true,
+                }
+            })
+        )
     }
 
     if (config.clean) {
